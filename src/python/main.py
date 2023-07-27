@@ -8,7 +8,8 @@ root = tk.Tk()
 
 root.title("PDF searcher")
 root.geometry("700x400")
-root.wm_iconbitmap("icon.ico")
+script_dir = os.path.dirname(os.path.abspath(__file__))
+root.wm_iconbitmap(os.path.join(script_dir, "icon.ico"))
 root.resizable(0,0)
 
 
@@ -74,9 +75,10 @@ search_keyword_box.bind("<FocusIn>", hide_placeholder)
 search_keyword_box.bind("<FocusOut>", show_placeholder)
 
 def search():
-    my_dll = cdll.LoadLibrary("ocr_searcher.dll")
-    my_dll.dllFucntion(file_selector_box.get(), search_keyword_box.get())
-
+    lib = cdll.LoadLibrary(os.path.join(script_dir, "ocr_searcher.dll"))
+    progress = lib.getProgress()
+    print(progress)
+    
 
 search_button = tk.Button(root, text="Search!", font=("Helvetica", 15), command=search)
 
