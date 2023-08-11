@@ -1,9 +1,9 @@
-CXX = g++
+CXX = gcc
 CXXFLAGS = -Wall -Wextra -pedantic -std=c++17 -m64
 SRCDIR = src
 BINDIR = bin
-SOURCES = $(wildcard $(SRCDIR)/*.cpp)
-OBJECTS = $(patsubst $(SRCDIR)/%.cpp,$(BINDIR)/%.o,$(SOURCES))
+SOURCES = $(wildcard $(SRCDIR)/*.c)
+OBJECTS = $(patsubst $(SRCDIR)/%.c,$(BINDIR)/%.o,$(SOURCES))
 
 all: $(BINDIR)/ocr_searcher.dll
 
